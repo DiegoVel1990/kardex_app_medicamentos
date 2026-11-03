@@ -1,25 +1,26 @@
-# Visualizador Kardex: paquete para GitHub Pages
+# Visualizador Kardex para GitHub Pages
 
-## Archivos
+## Contenido del repositorio
 
-- `index.html`: visualizador.
-- `data.csv`: fuente reemplazable, una fila por CLUES.
+Sube estos archivos a la raiz del nuevo repositorio: `index.html` y `data.json`. Conserva tambien `convertir_excel_a_json.py` y este README como apoyo.
 
-## Publicación inicial
+`data.json` concentra las tres hojas del Excel en una sola fuente: `Tabla_resumen` como `summary`, `Dx_arch_clues` como `records` y `Acciones_sugeridas` como `actions`. El mapa y la interfaz permanecen en `index.html`.
 
-1. Crea un repositorio público en GitHub y sube ambos archivos a la raíz.
-2. En **Settings → Pages**, selecciona publicar desde la rama `main`, carpeta `/ (root)`.
-3. Comparte la URL que GitHub Pages muestre, normalmente `https://USUARIO.github.io/REPOSITORIO/`, con la persona que administra WordPress.
-4. Esa persona agrega una sola vez un bloque HTML con un `iframe` que apunte a esa URL.
+## Publicacion inicial
+
+1. Crea un repositorio publico en GitHub y sube los archivos a la raiz.
+2. En **Settings → Pages**, publica desde la rama `main`, carpeta `/ (root)`.
+3. Comparte la URL publicada (normalmente `https://USUARIO.github.io/REPOSITORIO/`) con la persona que administra WordPress.
+4. Esa persona inserta una vez un bloque HTML como este, con la URL real:
 
 ```html
 <iframe src="https://USUARIO.github.io/REPOSITORIO/" title="Avance Kardex por estado" loading="lazy" style="display:block;width:100%;height:1100px;border:0"></iframe>
 ```
 
-## Actualizar los datos
+## Actualizaciones futuras
 
-1. En el Excel actualizado, exporta la hoja `Dx_arch_clues` como CSV UTF-8. Debe contener los campos de CLUES, entidad, tipología, unidad, jurisdicción, municipio, estado y motivo. El lector acepta encabezados con acentos y separador coma o punto y coma.
-2. Reemplaza `data.csv` en la raíz del mismo repositorio conservando el nombre y confirma el cambio. No edites `index.html`.
-3. GitHub Pages publicará de nuevo el sitio; al visitar o recargar la página, el visualizador vuelve a solicitar `data.csv` evitando la caché del navegador. La lectura ocurre al abrir o recargar la página; no hay consultas automáticas mientras permanece abierta. La fecha superior usa `Last-Modified` del servidor cuando está disponible; si no, indica la hora de consulta.
+1. Guarda el nuevo Excel con las mismas hojas y columnas.
+2. Guarda el Excel actualizado como `data.xlsx` en `C:\Users\diego.velazquez.OPDIB\OneDrive - IMSS-BIENESTAR\Documentos\IMSS-B\35 Medicamentos tablero\Avance`. Ejecuta el conversor con Python y `openpyxl` instalado. La ruta ya está configurada como predeterminada, así que puedes correr el script sin argumentos; genera `data.json` en esa misma carpeta de OneDrive, junto al Excel. También acepta una ruta como argumento si algún día cambia la ubicación.
+3. Reemplaza solo `data.json` en GitHub y confirma el cambio. La pagina lee el JSON al abrirse; no se actualiza mientras permanece abierta. El visitante puede recargarla para leer la version nueva. La fecha superior muestra la fecha de modificacion del servidor cuando esta disponible.
 
-El lector reconoce los encabezados originales de la hoja (`CLUES`, `ENTIDAD`, `NOMBRE DE TIPOLOGIA`, `NOMBRE DE LA UNIDAD`, `JURISDICCION`, `MUNICIPIO`, `Estado`, `Motivo`) o sus nombres normalizados. El resumen por entidad se calcula automáticamente a partir de las filas del CSV. Las geometrías del mapa y el catálogo de acciones recomendadas permanecen en `index.html`; si cambian las recomendaciones, también habrá que editar el HTML. El repositorio y la página de GitHub Pages serán públicos: publica ahí únicamente datos autorizados para consulta pública.
+El repositorio y la pagina de GitHub Pages seran publicos. Publica ahi unicamente datos autorizados para consulta publica.
