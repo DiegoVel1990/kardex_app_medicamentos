@@ -21,6 +21,6 @@ Sube estos archivos a la raiz del nuevo repositorio: `index.html` y `data.json`.
 
 1. Guarda el nuevo Excel con las mismas hojas y columnas.
 2. Guarda el Excel actualizado como `data.xlsx` en `C:\Users\diego.velazquez.OPDIB\OneDrive - IMSS-BIENESTAR\Documentos\IMSS-B\35 Medicamentos tablero\Avance`. Ejecuta el conversor con Python y `openpyxl` instalado. La ruta ya está configurada como predeterminada, así que puedes correr el script sin argumentos; genera `data.json` en esa misma carpeta de OneDrive, junto al Excel. También acepta una ruta como argumento si algún día cambia la ubicación.
-3. Reemplaza solo `data.json` en GitHub y confirma el cambio. La pagina lee el JSON al abrirse; no se actualiza mientras permanece abierta. El visitante puede recargarla para leer la version nueva. La fecha superior muestra la fecha de modificacion del servidor cuando esta disponible.
+3. Reemplaza solo `data.json` en GitHub y confirma el cambio. La pagina lee el JSON al abrirse; no se actualiza mientras permanece abierta. El visitante puede recargarla para leer la version nueva. El conversor agrega la hora local de generacion en `meta.generated`; el visualizador la muestra como fecha de generacion. Si falta, usa la fecha de modificacion del servidor y, como ultimo recurso, la hora de consulta.
 
 El repositorio y la pagina de GitHub Pages seran publicos. Publica ahi unicamente datos autorizados para consulta publica.
